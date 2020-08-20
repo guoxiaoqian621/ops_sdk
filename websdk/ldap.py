@@ -54,9 +54,9 @@ class LdapApi:
                                    raise_exceptions=False)
                 conn2.bind()
                 if conn2.result["description"] == "success":
-                    if 'email' in attr_dict:
+                    if 'email' in attr_dict and len(attr_dict["email"]) > 0:
                         email = attr_dict["email"][0] if isinstance(attr_dict["email"], list) else attr_dict["email"]
-                    elif 'mail' in attr_dict:
+                    elif 'mail' in attr_dict and len(attr_dict["mail"]) > 0:
                         email = attr_dict["mail"][0] if isinstance(attr_dict["mail"], list) else attr_dict["mail"]
                     else:
                         email = None
